@@ -33,6 +33,10 @@ app.get('/apps', (req, res) => {
     });
   }
 
+  if (!categories.includes(genres)) {
+    return res.status(400).send({ message: 'Genre does not exist.' });
+  }
+
   if (genres && categories.includes(genres)) {
     results = results.filter((x) => {
       return x.Genres === genres;
